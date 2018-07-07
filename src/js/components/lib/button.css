@@ -1,0 +1,19 @@
+
+.btn {
+    width: auto;
+    border-radius: 4px;
+    height: 60px;
+    font-size: 18px;
+    color: white;
+    background-color: #2c97ce;
+    margin: 5px;
+}
+.btn:hover {
+	color: white;
+}
+.btn:focus {
+	color: white;
+}
+.greenButton {
+	background-color: #00d39b;
+}

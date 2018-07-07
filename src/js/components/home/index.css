@@ -1,0 +1,13 @@
+.container {
+	background-color: #FFFFFF;
+	flex: 1;
+	/*overflow: hidden;*/
+	overflow: scroll;
+	display: flex;
+	flex-direction: column;
+}
+.separator {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}

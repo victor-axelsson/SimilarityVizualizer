@@ -1,0 +1,13 @@
+.container {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	background-color: #CCC; 
+}
+
+.innerContainer{
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
