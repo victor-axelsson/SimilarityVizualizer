@@ -1,7 +1,6 @@
 import React from 'react'
 import { CONSTANTS } from 'core/constants'
 import Home from './home'
-import Login from './login'
 import Similarity from './similarity/similarity'
 
 export function getRoute(route) {

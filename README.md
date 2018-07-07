@@ -1,53 +1,63 @@
 # About 
-This is a template for react websites. It'll get you up and running in no time. Follow the setup instructions and test it out. 
-I've added a simple login screen in order to show the basic flow of the program and give you the part you might need in order to get started.
+This is a simple template for visualizing similarities in high dimensional data. The project contains 2 projects. A python API and a react frontend. 
+
+The python API will: 
+- Grab data from a csv with weather data
+- Normalize it
+- Expose cosine similarity between rows through a simple FLASK api. 
+
+The react frontend will: 
+- Get user input about dates
+- Ask the API for days with similar weather
+- Ask the API about diversity in a subset if weather data
+- Do frontend filtering with a threshold to more clearly see graph centrality
+
+
 
 # Setup 
 - `git clone https://github.com/victor-axelsson/react_template.git`
 - `npm install`
-- Add env file `src/js/core/env.js`
+
+Used pip3 packages: 
 ```
-export const ENV = {
-    LOG: {
-        NETWORK: true,
-    },
-    DEV: true,
-    BASE_URL: "http://localhost:3000/v1"
-}
-``` 
+Flask_Cors==3.0.6
+Flask==0.12.2
+matplotlib==2.2.2
+scipy==1.1.0
+numpy==1.14.5
+scikit_learn==0.19.1
+```
+
+Istallation of python packages: 
+
+- `pip3 install Flask_Cors`
+- `pip3 install Flask` 
+- `pip3 install matplotlib`
+- `pip3 install scipy`
+- `pip3 install numpy`
+- `pip3 install scikit_learn`
+
+## Start API
+
+- `cd api` 
+- `python3 main.py`
+
+## Start frontend
+
 - `npm start`
 
-# Adding navigation
-If you want to navigate to another page you need o do the following: 
-- Create your new component
-- Create a entry in the `core/constants.js` file
-- Return you new component in the `components/router.js`
-- Dispatch the navigation event, like in the home component. 
+
+# Check similar to this
+
+Get a data from the CSV, like `2009-01-05` and put it in the textbox and click the button `Check similar to this`. It might be a bit laggy in the beggining. Use the slider to put it to a higher threshold and get a smaller graph. 
+
+
+# Get intra similarity
+
+Get multiple dates from the dataset. The easiest way to do this is to do a GET request to `localhost:6001/item/` and grab a couple of items (must be less than 50). Put it in the input box in the following format: 
 
 ```
-dispatch({
-    type: CONSTANTS.NAVIGATE_TO_PAGE, 
-    payload: {
-        name: CONSTANTS.LOGIN,
-        title: "Login"
-    }
-}); 
-``` 
+"2010-01-10", "2010-01-14", "2010-01-19", "2010-02-16", "2010-02-20", "2010-02-22", "2010-03-02", "2010-03-09", "2010-03-16", "2010-03-20", "2010-04-02", "2010-04-04", "2010-04-06", "2010-04-14", "2010-05-02", "2010-05-10", "2010-05-14", "2010-05-16", "2010-05-20", "2010-05-26", "2010-05-28", "2010-06-01", "2010-06-02", "2010-06-14", "2010-06-15", "2010-06-25", "2010-06-27", "2010-07-20", "2010-07-21", "2010-07-24", "2010-07-28", "2010-07-30"
+```
 
-# Making http requests
-You can have a look in the api folder, there should be a userApi.js file that is responsible for making http requests that regard the user. 
-If you have other kind of models, this is where you create you api calls. The easiest way is probably to mimic how it's already implemented. 
-You can import the http module which should have support for: 
-
-- GET
-- PUT
-- POST 
-- DELETE
-
-Should you need any other web methods, please implement and make a pull request. 
-
-# Persistent storage
-You can use the `core/persistentStorage.js` module if you want to save something perment. It has support for key/val storage. Currently it's used
-for storing the user object so that you don't get logged out if you refresh the browser. My suggestion is that you try and json encode your
-objects and store them as a key instead of saving all variables as sepparate keys. This will make it easier for you to retrieve bigger objects.
-
+They will be split by `","` and trimmed. It might be a bit laggy in the beggining. Use the slider to put it to a higher threshold and get a smaller graph. 

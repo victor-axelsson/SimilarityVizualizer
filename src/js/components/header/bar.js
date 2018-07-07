@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { CONSTANTS } from 'core/constants'
 import styles from './bar.css'
 import { COLORS } from 'core/colors'
-import Logout from '../lib/logout'
 
 class Bar extends Component {
 
@@ -20,15 +19,6 @@ class Bar extends Component {
 
     render() {
         var nameLabel = (<div></div>); 
-
-        if(this.props.isLoggedIn){
-            nameLabel = (
-                <div>
-                    <p style={{color: '#fff'}}>Hello there { this.props.user.username }</p>
-                    <Logout />
-                </div>
-            ); 
-        }
 
         return (
             <div className={ styles.container }>

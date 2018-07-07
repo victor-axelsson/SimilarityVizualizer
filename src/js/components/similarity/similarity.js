@@ -4,9 +4,8 @@ import { COLORS } from 'core/colors'
 import { CONSTANTS } from 'core/constants'
 import InputBox from '../lib/inputBox'
 import Button from '../lib/button'
-import { getSessionSimilarity, getSimilarDevice, getDistribution } from '../../api/similarityApi'
+import { getSessionSimilarity, getSimilarDevice } from '../../api/similarityApi'
 import SimilarityGraph from '../graph/similarityGraph'
-import DistributionGraph from '../graph/distributionGraph'
 
 class Similarity extends Component {
 
@@ -23,10 +22,6 @@ class Similarity extends Component {
             },
             showDistribution: true
         };
-    }
-
-    componentDidMount(){
-        this.props.getDeviceSimilarity()
     }
 
     replaceAll(str, search, replacement) {
@@ -47,6 +42,7 @@ class Similarity extends Component {
 
     checkSimilarToThis(){
         var device = this.replaceAll(this.state.form.devices[0], "\"", "").trim()
+        console.log(device)
         this.props.getSimGraph(device)
     }
 
@@ -97,9 +93,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         getSimGraph: (device) => {
             getSimilarDevice(device, dispatch)
-        },
-        getDeviceSimilarity: () =>{
-            getDistribution(dispatch)
         }
     };
 }
